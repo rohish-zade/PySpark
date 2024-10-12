@@ -120,3 +120,25 @@ The Apache Spark ecosystem consists of various components that extend Spark’s 
 
 ![](https://github.com/rohish-zade/PySpark/blob/main/materials/spark_ecosystem.png)
 
+### Spark Core
+- The Spark Core is the heart of Spark and performs the core functionality.
+- The foundational engine of the Spark ecosystem responsible for basic functions like `task scheduling`, `memory management`, `fault recovery`, `interacting with storage systems` and `distributed execution`.
+- Provides APIs for RDD (Resilient Distributed Dataset) creation, transformations, and actions.
+
+### Spark SQL
+- The Spark SQL is built on the top of Spark Core.
+- A module for structured data processing, allowing users to query data using SQL as well as DataFrame and Dataset APIs.
+- Provides a unified interface for working with structured data across different formats, and supports ANSI SQL, enabling integration with BI tools.
+
+### Spark Streaming
+- Used for real-time data processing, Spark Streaming allows for processing of live data streams, making it suitable for applications like log processing and fraud detection.
+- Processes data in micro-batches and integrates with data sources like Kafka, Flume, and HDFS.
+
+### MLlib (Machine Learning Library)
+- Spark’s machine learning library that includes algorithms and utilities for tasks such as classification, regression, clustering, collaborative filtering, and dimensionality reduction.
+- Supports distributed machine learning, simplifying the creation of scalable machine learning models.
+
+### GraphX
+- A library for graph processing and graph-parallel computation, allowing users to create, transform, and query graphs at scale.
+- Enables distributed computation on graph data, such as social network analysis or recommendation systems.
+
