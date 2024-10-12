@@ -113,3 +113,10 @@ Despite its advantages, Hadoop faced several limitations:
 -- **Inefficiency with Small Data:** Spark's overhead can make it inefficient for processing small datasets compared to traditional tools.
 - **Dependency on Java Virtual Machine (JVM):** Running on the JVM can introduce performance overhead and complicate garbage collection issues.
 - **Lack of Built-in Visualization:** Spark does not provide built-in visualization tools, requiring external applications for data analysis and visualization.
+
+
+## Apache Spark EcoSystem
+The Apache Spark ecosystem consists of various components that extend Spark’s capabilities for different data processing tasks.
+
+![](https://github.com/rohish-zade/PySpark/blob/main/materials/spark_ecosystem.png)
+
