@@ -6,7 +6,7 @@
   - Resilient Distributed Dataset (RDD)
   - Directed Acyclic Graph (DAG)
 
-### Resilient Distributed Dataset (RDD)
+#### Resilient Distributed Dataset (RDD)
 - RDDs are the building blocks of any Spark application. 
 - RDDs Stands for:
   - `Resilient`: Fault tolerant and is capable of rebuilding data on failure
@@ -24,7 +24,7 @@
  
   2. **Actions**: Actions are operations that trigger the execution of transformations and return a result to the driver or write output to storage (e.g., `collect`, `count`).
 
-### Directed Acyclic Graph (DAG)
+#### Directed Acyclic Graph (DAG)
 - In Spark, a Directed Acyclic Graph (DAG) represents the sequence of computations performed on data. 
 - When transformations are applied to an RDD, Spark builds a DAG of stages (which consist of a series of tasks). 
 - DAG helps Spark to optimize executions, achieve parallelism, and provide fault tolerance.
