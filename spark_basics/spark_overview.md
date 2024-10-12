@@ -118,6 +118,8 @@ Despite its advantages, Hadoop faced several limitations:
 ## Apache Spark EcoSystem
 The Apache Spark ecosystem consists of various components that extend Spark’s capabilities for different data processing tasks.
 
+![](https://github.com/rohish-zade/PySpark/blob/main/materials/apache-spark-ecosystem.jpg)
+
 ![](https://github.com/rohish-zade/PySpark/blob/main/materials/spark_ecosystem.png)
 
 ### Spark Core
