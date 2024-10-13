@@ -152,7 +152,7 @@ In Apache Spark, there are two main deploy modes:
 ### 1. Client Mode:
 - In client mode, the Spark driver runs on the machine that submits the application (the client machine). The driver connects to the cluster to perform the job, but the client machine must remain active and connected to the cluster for the job to complete.
 - This mode is usually used in `development` or `interactive` data analysis sessions where the client needs to control the job execution.
-  ![](https://github.com/rohish-zade/PySpark/blob/main/materials/client-mode.png)
+  ![](https://github.com/rohish-zade/PySpark/blob/main/materials/client-deploy-mode.png)
 
 ### 2. Cluster Mode:
 - In this mode, the Spark driver runs on one of the worker nodes in the cluster. 
