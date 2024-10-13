@@ -92,7 +92,7 @@ Apache Spark Architecture is based on two main abstractions:
 - DAG Scheduler converts the graph into stages. A new stage is created based on the shuffling boundaries.
 - Now the driver talks to the cluster manager and negotiates the resources. Cluster manager launches executors in worker nodes on behalf of the driver. At this point, the driver will send the tasks to the executors based on data placement. When executors start, they register themselves with drivers. So, the driver will have a complete view of executors that are executing the task.
 - While the job is running, driver program will monitor and coordinate the running tasks. Driver node also schedules future tasks based on data placement.
-
+  ![](https://github.com/rohish-zade/PySpark/blob/main/materials/Spark-RDD-execution-workflow.png)
 
 ## Lifecycle of Spark Application
 - **Users Submits Application:** 
@@ -119,8 +119,7 @@ Apache Spark Architecture is based on two main abstractions:
 - **Application Comes to End:**
   - Once the job completes successfully, the application finishes.
   - All resources allocated for the job are released, and the driver exits.
-
-  ![](https://github.com/rohish-zade/PySpark/blob/main/materials/Spark-RDD-execution-workflow.png)
+  ![](https://github.com/rohish-zade/PySpark/blob/main/materials/lifecycle%20of%20spark%20aplication.png)
 
 ## How to execute Spark Programs?
 1. Interactive Clients: `spark-shell`, `Notebook`
