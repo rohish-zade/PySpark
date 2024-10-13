@@ -85,7 +85,11 @@ Apache Spark Architecture is based on two main abstractions:
 
 
 **Spark with YARN as Resource Manager:**
-
+- **Worker Node:** 256 GB, 32 CPU cores
+- what we need for:
+  - `Job 1`: 3 Executers each with 5 CPU cores and 32 GB Memory
+  - `Job 2`: 1 Executers with 3 CPU cores and 16 GB Memory
+  ![](https://github.com/rohish-zade/PySpark/blob/main/materials/spark-with-yarn-rm.png)
 
 ## Spark Execution Workflow
 - When a job is submitted, driver implicitly converts user code that contains transformations and actions into a logically `Directed Acyclic Graph` called DAG. At this stage, it also performs optimizations such as pipelining transformations.
