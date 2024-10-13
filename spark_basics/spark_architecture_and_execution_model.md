@@ -1,10 +1,7 @@
-## Apache Spark Architecture
-
-- Apache Spark works in a `master-slave` architecture where the master is called `Driver` and slaves are called `Workers`.
-- Master manages, maintains, and monitors the slaves while slaves are the actual workers who perform the processing tasks
-- Apache Spark Architecture is based on two main abstractions:
-  - Resilient Distributed Dataset (RDD)
-  - Directed Acyclic Graph (DAG)
+## Apache Spark Abstraction Layers
+Apache Spark Architecture is based on two main abstractions:
+- Resilient Distributed Dataset (RDD)
+- Directed Acyclic Graph (DAG)
 
 #### Resilient Distributed Dataset (RDD)
 - RDDs are the building blocks of any Spark application. 
@@ -35,6 +32,14 @@
   - `Directed`: It means a direct connection from one node to another. 
   - `Acyclic`: It means that there are no cycles or loops present. Whenever a transformation occurs, it cannot return to its earlier state.
   - `Graph`: A graph is a combination of vertices and edges. Here vertices represent the RDDs, and the edges, represent the operation to be applied to the RDDs.
+
+
+## Apache Spark Architecture
+
+- Apache Spark works in a `master-slave` architecture where the master is called `Driver` and slaves are called `Workers` where all the components and layers of Spark are loosely coupled.
+- Master manages, maintains, and monitors the slaves while slaves are the actual workers who perform the processing tasks.
+
+  ![](https://github.com/rohish-zade/PySpark/blob/main/materials/spark-architecture.png)
 
 
 
