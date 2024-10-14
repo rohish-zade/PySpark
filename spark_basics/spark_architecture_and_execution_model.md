@@ -167,3 +167,28 @@ In Apache Spark, there are two main deploy modes:
 ## Difference Between Spark Deploy Mode and Execution Modes
 - `Spark Execution Modes:` Spark's execution modes refer to how Spark jobs are executed within a cluster, based on the cluster manager used. Refers to where and how the entire application runs
 -  `Spark Deploy Modes:` Spark's deploy mode defines where the Spark driver runs in relation to the cluster.
+
+## Transformations and Actions in Spark
+
+### Transformations
+- Transformations are operations that create a new RDD (Resilient Distributed Dataset), DataFrame, or Dataset from an existing one, without immediately executing the computation. - They are lazy and build up the Directed Acyclic Graph (DAG) until an action triggers the execution.
+
+#### There are two types are transformations:
+- Narrow Transformation
+- Wide Transformation
+
+**Narrow Transformation:**
+-  Transformations that dose not result in data movement between partitions are called Narrow transformations. 
+- Functions such as `map()`, `flatMap()`, `filter()`, `union()` are some examples of narrow transformation
+
+**Wide Transformation:**
+- Transformations that involves data movement between partitions are called Wide transformations or shuffle transformations. 
+- Functions such as `groupByKey()`, `aggregate()`, `aggregateByKey()`, `join()`, `repartition()` are some examples of a wide transformations.
+
+
+### Actions
+- Actions trigger the execution of transformations and return a result to the driver or write the data to external storage. 
+- They are what cause the DAG built by transformations to be executed.
+
+- Key Actions:
+  - `collect()`, `count()`, `first()`, `take(n)`, `reduce()`, `saveAsTextFile()`, `foreach()`, `countByKey()`, `takeOrdered(n)`, `top(n)`, `aggregate()`, `saveAsSequenceFile()`, `saveAsObjectFile()`, `takeSample()`
