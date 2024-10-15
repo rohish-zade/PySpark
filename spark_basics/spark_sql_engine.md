@@ -37,7 +37,7 @@ The optimization process is divided into `four` phases:
 ### 4. Code Generation
 
 
-## Interview questions on Spark SQL Enginer or Catalyst Optimizer
+## Interview questions on Spark SQL Engine or Catalyst Optimizer
 
 #### Is spark sql engine a compiler?
 - Answer: No, the Spark SQL engine is not a traditional compiler, but it incorporates some compiler-like behavior. Instead of directly compiling code, it is responsible for optimizing and executing SQL queries and DataFrame operations on distributed data. 
