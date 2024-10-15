@@ -50,6 +50,10 @@
 
  - When we run the above code in Databrics, We see 3 job is created by spark for each actions i.e `read`, `inferSchema`, and `show`
    ![](https://github.com/rohish-zade/PySpark/blob/main/materials/dag_and_lazy_evaulation_1.png)
-
-
-**`For each action one job will be created and for each job one DAG will be created.`**
+- we can see the DAG created by each job
+  ![](https://github.com/rohish-zade/PySpark/blob/main/materials/dag_for_job.png)
+- **`For each action one job will be created and for each job one DAG will be created.`**
+- When we execute only the first part of code: we can see only 2 jobs created
+  ![](https://github.com/rohish-zade/PySpark/blob/main/materials/read_csv_dag.png)
+- when we execute any transformatons: spark did not start the job execution so we dont see any jobs, this is lazy evaluated.
+  1[](https://github.com/rohish-zade/PySpark/blob/main/materials/no_job_for_transformation.png)
