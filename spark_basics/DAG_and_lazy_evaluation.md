@@ -27,29 +27,29 @@
 ### Let's understand how Lazy Evaluation works and how DAG will be created by taking an example of the below code:
 
   ```Python
-  # Reading the CSV File: this section has two actions `read` and `inferSchema` so spark will create 2 jobs and for each DAG will be created (triggers execution)
+  # Reading the CSV File: this section has two actions `read` and `inferSchema` so spark will create 2 jobs and for each job DAG will be created (triggers execution)
   flight_data = spark.read.format("csv") \
+      .option("delimiter", "\t") \
       .option("header", "true") \
       .option("inferSchema", "true") \
-      .load("dbfs:/FileStore/tables/flight_data.csv")
+      .load("dbfs:/databricks-datasets/flights/airport-codes-na.txt")
   
-  # Repartitioning the Data:  # repartition is wide transformation so no job will be created but the DAG wil be created, this is called Lazy Evaluation
+  # Repartitioning the Data:  # repartition is wide transformation so no job will be created   but the DAG wil be created, this is called azy Evaluation
   flight_data_repartition = flight_data.repartition(3) 
   
   # Filtering Data for the United States:
-  us_flight_data = flight_data.filter(col("DEST_COUNTRY_NAME") == "United States") # narrow   transformation
-
-  # Filtering for India and Singapore: narrow transformation 
-  us_india_data = us_flight_data.filter(
-      (col("ORIGIN_COUNTRY_NAME") == "India") | 
-      (col("ORIGIN_COUNTRY_NAME") == "Singapore")
-  )
-
-  # Grouping and Summing the Count: wide transformation
-  total_flight_ind_sing = us_india_data.groupBy("DEST_COUNTRY_NAME").sum("count")
+  us_flight_data = flight_data.filter(col("Country") == "USA") # narrow   transformation
   
+  # Filtering for Texas : narrow transformation 
+  us_texas_data = us_flight_data.filter(
+      (col("City") == "India")
+  )
   # Showing the Results: show is an action (triggers execution)
-  total_flight_ind_sing.show()
+  us_texas_data.show()
   ```
+
+ - When we run the above code in Databrics, We see 3 job is created by spark for each actions i.e `read`, `inferSchema`, and `show`
+   ![](https://github.com/rohish-zade/PySpark/blob/main/materials/dag_and_lazy_evaulation_1.png)
+
 
 **`For each action one job will be created and for each job one DAG will be created.`**
