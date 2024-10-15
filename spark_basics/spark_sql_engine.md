@@ -16,6 +16,7 @@ It converts a `logical plan` into an `optimized execution plan` to make query ex
 The optimization process is divided into `four` phases:
   - `Analysis`, `Logical Planning or Logical Optimization`,` Physical Planning`, `Code Generation`
 
+  ![](https://github.com/rohish-zade/PySpark/blob/main/materials/Catalyst-Optimizer.png)
 
 ### 1. Analysis
 - **What happens?:**
