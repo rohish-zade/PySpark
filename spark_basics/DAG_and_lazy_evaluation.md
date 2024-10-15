@@ -55,5 +55,5 @@
 - **`For each action one job will be created and for each job one DAG will be created.`**
 - When we execute only the first part of code: we can see only 2 jobs created
   ![](https://github.com/rohish-zade/PySpark/blob/main/materials/read_csv_dag.png)
-- when we execute any transformatons: spark did not start the job execution so we dont see any jobs, this is lazy evaluated.
-  1[](https://github.com/rohish-zade/PySpark/blob/main/materials/no_job_for_transformation.png)
+- when we execute only transformations: spark did not start the job execution so we dont see any jobs, this is lazy evaluated.
+  ![](https://github.com/rohish-zade/PySpark/blob/main/materials/no_job_for_transformation.png)
