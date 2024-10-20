@@ -97,3 +97,54 @@ It is one of the most commonly used data structures in Spark because it offers b
 - `Support for UDFs:` Custom transformations can be applied using user-defined functions (UDFs) on DataFrame columns.
 - `Adaptive Query Execution:` DataFrames take advantage of Adaptive Query Execution (AQE) to optimize queries at runtime.
 - `Batch and Streaming Support:` DataFrames can handle both batch and streaming data seamlessly using the same API.
+
+
+## Dataset in Apache Spark:
+A Dataset is a distributed collection of data. It provides a strong typing and a more functional programming interface.
+
+It combines the best features of both RDDs (Resilient Distributed Datasets) and DataFrames, allowing users to work with both structured and unstructured data in a type-safe manner.
+
+### Features of Datasets in Apache Spark:
+- `Strongly Typed:` Datasets are type-safe, meaning they enforce compile-time type checking. This is particularly beneficial in languages like Scala and Java, where type mismatches can be caught during compilation.
+
+- `High-Level Abstraction:` Datasets provide a high-level API for working with structured data while still allowing for functional programming constructs, such as map(), flatMap(), filter(), and groupBy().
+
+- `Optimized Execution:` Like DataFrames, Datasets benefit from the Catalyst Optimizer and Tungsten execution engine, allowing for automatic optimization of query plans and efficient execution.
+
+- `Interoperability with DataFrames`: Datasets can be easily converted to and from DataFrames. This means you can leverage the advantages of both APIs depending on your needs.
+
+- `Support for Encoders:` Datasets use encoders to convert data between JVM objects and Spark’s internal representation. This provides efficient serialization and deserialization, improving performance.
+
+- `Seamless Integration with SQL`: Datasets can be queried using SQL, allowing users to combine declarative SQL syntax with functional programming operations.
+
+- `Distributed Processing:` Like RDDs and DataFrames, Datasets are distributed across a Spark cluster, enabling parallel processing of large datasets.
+
+- `Fault Tolerance:` Datasets are inherently fault-tolerant, leveraging Spark's lineage information to recover lost partitions in case of failure.
+
+- `Native Support for Complex Data Types:` Datasets can handle complex data types such as `arrays`, `maps`, and `structs`, making them versatile for a wide range of data processing tasks.
+
+- `Integration with Machine Learning:` Datasets can be used directly in Spark's MLlib for machine learning tasks, allowing for efficient data handling in modeling and prediction.
+
+
+## Difference Betweeen RDDs, DataFrames, and Datasets in Apache Spark:
+
+  | Feature               | RDD (Resilient Distributed   Dataset)                             | DataFrame                                       |   Dataset                                          |
+  |-----------------------|---------------------------------------------------------------|  ------------------------------------------------|  -------------------------------------------------|
+  | **Definition**        | A distributed collection of objects, not necessarily   structured. | A distributed collection of data organized into named columns (like a   table). | A distributed collection of data that provides strong typing and a functional   programming interface. |
+  | **Schema**            | No schema; can hold any type of data.                         |   Schema-aware with defined column names and types. | Strongly typed; enforces compile-time   type checking (in Scala and Java). |
+  | **Optimization**      | No optimization; manual optimization required.                |   Optimized using Catalyst and Tungsten.         | Also optimized by Catalyst and Tungsten,   providing the same benefits as DataFrames. |
+  | **Data Manipulation** | Operations are performed using transformations (map, filter,   etc.). | Uses a high-level API with SQL-like operations (select, filter, groupBy). |   Combines functional programming constructs with high-level operations, allowing both SQL   and functional manipulations. |
+  | **Performance**       | Generally slower for structured data due to lack of   optimizations. | Generally faster due to optimizations and efficient memory usage. | Fast   performance due to optimizations, similar to DataFrames. |
+  | **Interoperability**  | No direct interoperability with DataFrames; must convert.    |   Can be converted to and from Datasets easily. | Can be converted to and from DataFrames   easily. |
+  | **Type Safety**       | No type safety; types are checked at runtime.                |   No compile-time type safety; dynamic typing.   | Strongly typed; provides compile-time   type safety in Scala and Java. |
+  | **Use Cases**         | Ideal for unstructured data, low-level transformations, or when   fine-grained control is needed. | Best for structured data processing, analytics, and SQL   queries. | Best for working with structured data while requiring type safety and   functional programming capabilities. |
+  | **UDF Support**       | Supports user-defined functions (UDFs) but requires more   boilerplate. | Supports UDFs easily with high-level API.     | Supports UDFs seamlessly   with strong typing. |
+  | **Data Sources**      | Can work with any type of data source.                       |   Reads from structured data sources like CSV, JSON, Parquet, etc. | Also reads from   structured data sources, benefiting from optimizations. |
+
+
+### When to use what??
+- ***RDD:*** Best for low-level operations and unstructured data; no optimizations or schema.
+
+- ***DataFrame:*** Best for structured data with optimizations and SQL-like operations; schema-aware but dynamically typed.
+
+- ***Dataset:*** Combines the advantages of RDDs and DataFrames, offering strong typing and functional programming while benefiting from optimizations; best for structured data where type safety is important.
