@@ -57,3 +57,22 @@
   ![](https://github.com/rohish-zade/PySpark/blob/main/materials/read_csv_dag.png)
 - when we execute only transformations: spark did not start the job execution so we dont see any jobs, this is lazy evaluated.
   ![](https://github.com/rohish-zade/PySpark/blob/main/materials/no_job_for_transformation.png)
+
+
+### Note: read() is action or not?? will it trigger job??
+In Spark, reading data from a source using the `DataFrameReader` (like spark.read.format("csv").load()) does not trigger a job immediately. Instead, it only creates a logical plan but In `Databricks and many other environments`, reading from a file (like CSV) using .read() can trigger a job, depending on the underlying implementation of the data source API. Here's why:
+
+- `Catalyst Optimizer and Lazy Evaluation:`
+  - Spark normally follows a lazy evaluation model, where transformations are only planned but not executed until an action is called.
+  - However, file-reading operations are a bit different, especially when using formats like `CSV`, `Parquet`, or `ORC`.
+  - When you call read(), Spark needs to interact with the underlying storage system (like `HDFS`, `S3`, or `local filesystem`) to infer the schema or read the metadata of the file.
+  - This metadata-reading process requires some computation, which results in Spark triggering a job to gather the file details. The job does not read the entire file's contents at this point but does perform some operations.
+
+- `Job Execution for .read() in CSV:`
+  - If your file is in CSV format, Spark might trigger a job to:
+    - **Infer schema** from the first few lines of the file.
+    - **Read file partitions** to figure out how the data should be split across the cluster.
+
+**Yes, a job can be triggered by .read() in Databricks (and some other environments) because of schema inference or metadata reading.**
+
+**This behavior may vary slightly depending on the file format, data source, and Spark environment you're using.**
