@@ -38,17 +38,17 @@
   flight_data_repartition = flight_data.repartition(3) 
   
   # Filtering Data for the United States:
-  us_flight_data = flight_data.filter(col("Country") == "USA") # narrow   transformation
+  us_flight_data = flight_data.filter(col("Country") == "USA") # narrow transformation
   
   # Filtering for Texas : narrow transformation 
   us_texas_data = us_flight_data.filter(
       (col("City") == "India")
   )
-  # Showing the Results: show is an action (triggers execution)
+  # Showing the Results: show() is an action (triggers execution)
   us_texas_data.show()
   ```
 
- - When we run the above code in Databrics, We see 3 job is created by spark for each actions i.e `read`, `inferSchema`, and `show`
+ - When we run the above code in Databricks, we see 3 job is created by spark for each actions i.e `read`, `inferSchema`, and `show`
    ![](https://github.com/rohish-zade/PySpark/blob/main/materials/dag_and_lazy_evaulation_1.png)
 - we can see the DAG created by each job
   ![](https://github.com/rohish-zade/PySpark/blob/main/materials/dag_for_job.png)
