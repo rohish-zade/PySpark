@@ -57,7 +57,6 @@ Proper partitioning can have a significant impact on the performance and efficie
   ```
 
 
-
 ### Choosing between them:
 - Use `repartition` for significant changes in partition count.
 - Use `coalesce` for reducing partitions with minimal shuffling, which is more efficient.
