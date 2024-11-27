@@ -153,7 +153,6 @@ Below are commonly used options categorized by functionality:
   - Install tools and libraries needed for job execution.
   - This setup isolates user activities from the cluster, enhancing security.
 
-
 ## What will happen if I close my edge node?
 - It depends on the deployment mode:
   - `Client Mode:` The Spark driver resides on the edge node. If the edge node is closed, the job will fail because the driver loses communication with the cluster.
