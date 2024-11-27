@@ -143,3 +143,18 @@ Below are commonly used options categorized by functionality:
   --driver-memory 1G \
   --executor-memory 2G
   ```
+
+## What is an edge node?
+- An edge node is a gateway machine that connects the client to the Spark cluster. It’s typically used for submitting jobs to the cluster via tools like spark-submit. 
+- The edge node is external to the cluster but has access to its network. 
+- It acts as a secure bridge for data engineers to:
+  - Submit Spark jobs.
+  - Run client applications.
+  - Install tools and libraries needed for job execution.
+  - This setup isolates user activities from the cluster, enhancing security.
+
+
+## What will happen if I close my edge node?
+- It depends on the deployment mode:
+  - `Client Mode:` The Spark driver resides on the edge node. If the edge node is closed, the job will fail because the driver loses communication with the cluster.
+  - `Cluster Mode:` The Spark driver runs on a worker node in the cluster. In this case, the job will continue executing because the edge node’s role ends after job submission.
