@@ -26,8 +26,7 @@ below are the 3 major feature of AQE:
 - It checks the data size after shuffling and merges small partitions together, leading to fewer but larger partitions and improved parallelism.
 - AQE chooses the best number of partitions automatically.
 
-**Without AQE:** 
-- The default number of shuffle partitions (e.g., 200 by default) might result in many small partitions, wasting resources and increasing scheduling overhead.
+**Without AQE:** The default number of shuffle partitions (e.g., 200 by default) might result in many small partitions, wasting resources and increasing scheduling overhead.
 
 **With AQE:** Spark adjusts the number of partitions at runtime to better match the data size, ensuring efficient use of resources.
 
@@ -59,11 +58,9 @@ Joining a large sales table with a small promotions table:
 - In cases where data is skewed (some partitions are much larger than others), AQE can detect this and optimize the join by splitting the skewed partitions into smaller ones, ensuring more balanced and efficient processing.
 - Spark detects data skew (i.e., when one or more partitions have significantly more data than others) at runtime and splits the skewed partitions into smaller chunks.
 
-**Without AQE:**
-- A skewed partition may cause one executor to handle most of the work, while others remain underutilized, leading to slow execution or even failures.
+**Without AQE:** A skewed partition may cause one executor to handle most of the work, while others remain underutilized, leading to slow execution or even failures.
 
-**With AQE:** 
-- Skewed partitions are split dynamically, ensuring balanced resource utilization and faster query execution.
+**With AQE:**  Skewed partitions are split dynamically, ensuring balanced resource utilization and faster query execution.
 
 **Example:**
 
