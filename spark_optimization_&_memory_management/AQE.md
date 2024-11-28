@@ -13,6 +13,8 @@
   - `spark.sql.adaptive.coalescePartitions.enabled:` Enables coalescing of shuffle partitions.
   - `spark.sql.adaptive.skewJoin.enabled:` Enables skew join optimization.
   - `spark.sql.adaptive.broadcastJoinThreshold:` Threshold for dynamically choosing broadcast joins.
+
+
 ### Features of AQE
 below are the 3 major feature of AQE:
 1. Dynamically coalescing shuffle partitions
@@ -31,6 +33,45 @@ below are the 3 major feature of AQE:
 
   ![dynamically coalescing shuffle partitions](https://github.com/rohish-zade/PySpark/blob/main/materials/coalescing-shuffle-partitions.jpg)
 
+**Example:**
+
+Imagine a shuffle stage where the actual data size is only 50MB, but Spark’s default configuration creates 200 partitions(for any joins and aggregations).
+- `Without AQE:` Spark generates 200 tiny partitions, each processing only ~0.25MB. This increases scheduling overhead and executor idle time.
+
+- `With AQE:` Spark coalesces the partitions dynamically to, say, 10 partitions, each processing ~5MB, optimizing execution time.
+- `spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "true")`
+
+
+#### Dynamically switching join strategies
+- Spark can switch between different join strategies (e.g., shuffle join, broadcast join) at runtime based on the size of the data.
+- If the data is small enough, it may use a broadcast join (more efficient) instead of a shuffle join (which is more costly)
+
+**Example:**
+
+Joining a large sales table with a small promotions table:
+
+- `Without AQE:` If the promotions table size is underestimated, Spark might use a shuffle join, resulting in unnecessary shuffling.
+- `With AQE:` During runtime, Spark detects that the promotions table is small enough (e.g., <10MB) and switches to a broadcast join, reducing shuffle overhead.
+- `spark.conf.set("spark.sql.adaptive.broadcastJoinThreshold", "10485760")`  # 10MB
+
+
+#### Dynamically optimizing skew joins(uneven partitions)
+- In cases where data is skewed (some partitions are much larger than others), AQE can detect this and optimize the join by splitting the skewed partitions into smaller ones, ensuring more balanced and efficient processing.
+- Spark detects data skew (i.e., when one or more partitions have significantly more data than others) at runtime and splits the skewed partitions into smaller chunks.
+
+**Without AQE:**
+- A skewed partition may cause one executor to handle most of the work, while others remain underutilized, leading to slow execution or even failures.
+
+**With AQE:** 
+- Skewed partitions are split dynamically, ensuring balanced resource utilization and faster query execution.
+
+**Example:**
+
+Joining a large sales table with a products table where most rows in sales have the same product_id (e.g., product_id = 1).
+
+- `Without AQE:` The partition containing product_id = 1 is overloaded, causing a bottleneck.
+- `With AQE:` Spark identifies this skew during runtime and splits the overloaded partition into smaller sub-partitions, distributing the workload across executors.
+- `spark.conf.set("spark.sql.adaptive.skewJoin.enabled", "true")`
 
 
 ### Benefits of AQE
