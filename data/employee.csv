@@ -1,0 +1,6 @@
+id,name,age,salary,address,nominee
+1,Manish,26,75000,bihar,nominee1
+2,Nikita,23,100000,uttarpradesh,nominee2
+3,Pritam,22,150000,Bangalore,India,nominee3
+4,Prantosh,17,200000,Kolkata,India,nominee4
+5,Vikash,31,300000,,nominee5
