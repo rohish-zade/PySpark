@@ -171,7 +171,8 @@ In Apache Spark, there are two main deploy modes:
 ## Transformations and Actions in Spark
 
 ### Transformations
-- Transformations are operations that create a new RDD (Resilient Distributed Dataset), DataFrame, or Dataset from an existing one, without immediately executing the computation. - They are lazy and build up the Directed Acyclic Graph (DAG) until an action triggers the execution.
+- Transformations are operations that create a new RDD (Resilient Distributed Dataset), DataFrame, or Dataset from an existing one, without immediately executing the computation.
+- They are lazy and build up the Directed Acyclic Graph (DAG) until an action triggers the execution.
 
 #### There are two types are transformations:
 - Narrow Transformation
