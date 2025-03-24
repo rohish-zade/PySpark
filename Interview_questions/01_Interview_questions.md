@@ -2,7 +2,7 @@
 
 In one of my recent projects, we were migrating multiple on-prem ETL jobs from Hadoop/Talend to Azure Cloud using Azure Akora Framework. A major challenge we faced was performance bottlenecks due to inefficient Hive SQL to Spark SQL conversion, especially for queries involving large joins and aggregations on multi-terabyte datasets.
 
-**To optimize performance:**
+#### To optimize performance:
 
 **Optimized Data Partitioning:**
 - The original Hive tables had suboptimal partitioning, leading to data skew and long-running Spark jobs.
