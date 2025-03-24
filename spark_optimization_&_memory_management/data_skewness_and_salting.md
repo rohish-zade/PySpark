@@ -16,7 +16,7 @@ Data skewness in Spark happens when a small percentage of partitions get most of
 ### How to Detect Data Skewness?
 - **Check Job Execution in UI** – The Spark UI will show certain tasks taking significantly longer to complete.
 - **Check Partition Sizes** – Use df.rdd.glom().map(len).collect() to inspect partition sizes.
-- `Check Skewed Keys in Joins` – Run df.groupBy("key").count().orderBy(desc("count")).show(10) to find keys with excessive records.
+- **Check Skewed Keys in Joins** – Run df.groupBy("key").count().orderBy(desc("count")).show(10) to find keys with excessive records.
 
 ------
 
